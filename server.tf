@@ -31,10 +31,10 @@ resource "aws_security_group" "sg_for_ec2" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    description = "HTTP from the ALB"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
+    description     = "HTTP from the ALB"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
     security_groups = [aws_security_group.sg_for_alb.id]
   }
 
@@ -48,6 +48,25 @@ resource "aws_security_group" "sg_for_ec2" {
   tags = {
     Name = "sg_for_ec2"
   }
+}
+
+# Create the launch configuration for the ASG
+resource "aws_launch_configuration" "launch_config" {
+  image_id        = local.ami
+  instance_type   = "t2.micro"
+  security_groups = [aws_security_group.sg_for_ec2.id]
+
+  user_data = <<-EOF
+        #!/bin/bash
+        sudo yum update -y
+        sudo yum install -y httpd
+        sudo systemctl start httpd
+        sudo systemctl enable httpd
+        cd /var/www/html
+        echo "<html><h1>This is my 1st server</h1></html>" > index.html
+        sudo systemctl restart httpd
+
+    EOF
 }
 
 # Create the ALB
