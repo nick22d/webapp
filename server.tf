@@ -119,3 +119,20 @@ resource "aws_lb_listener" "listener" {
     target_group_arn = aws_lb_target_group.lb_tg.arn
   }
 }
+
+# Create a listener rule for the ALB
+resource "aws_lb_listener_rule" "lb_rule" {
+  listener_arn = aws_lb_listener.listener.arn
+  priority     = 100
+
+  condition {
+    path_pattern {
+      values = ["*"]
+    }
+  }
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.lb_tg.arn
+  }
+}
