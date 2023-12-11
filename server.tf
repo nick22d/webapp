@@ -80,6 +80,8 @@ resource "aws_autoscaling_group" "asg" {
   max_size             = 10
 
   vpc_zone_identifier = [for subnet in aws_subnet.private_subnets : subnet.id]
+
+  target_group_arns = [aws_lb_target_group.lb_tg.arn]
 }
 
 # Create the ALB
@@ -104,6 +106,7 @@ resource "aws_lb_target_group" "lb_tg" {
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
 }
+
 
 /*
 resource "aws_lb_listener" "listener" {
