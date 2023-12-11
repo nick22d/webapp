@@ -13,6 +13,8 @@ locals {
 
   vpc_cidr_block = "10.0.0.0/16"
 
+  ami = "ami-0302f42a44bf53a45"
+
   tags = {
     Name = "managedByTF"
   }
