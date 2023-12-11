@@ -108,14 +108,14 @@ resource "aws_lb_target_group" "lb_tg" {
 }
 
 
-/*
+# Create a listener for the ALB
 resource "aws_lb_listener" "listener" {
-    load_balancer_arn = aws_lb.alb.arn
-    port = 80
-    protocol = "HTTP"
+  load_balancer_arn = aws_lb.alb.arn
+  port              = 80
+  protocol          = "HTTP"
 
-    default_action {
+  default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
+    target_group_arn = aws_lb_target_group.lb_tg.arn
   }
-}*/
+}
