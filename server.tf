@@ -24,6 +24,32 @@ resource "aws_security_group" "sg_for_alb" {
   }
 }
 
+# Create the security group for the EC2 fleet
+resource "aws_security_group" "sg_for_ec2" {
+  name        = "sg_for_ec2"
+  description = "Allow HTTP traffic from the ALB."
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "HTTP from the ALB"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    security_groups = [aws_security_group.sg_for_alb.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "sg_for_ec2"
+  }
+}
+
 # Create the ALB
 resource "aws_lb" "alb" {
   name               = "alb"
@@ -38,3 +64,4 @@ resource "aws_lb" "alb" {
     Environment = "alb"
   }
 }
+
