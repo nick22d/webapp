@@ -67,6 +67,19 @@ resource "aws_launch_configuration" "launch_config" {
         sudo systemctl restart httpd
 
     EOF
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# Create the ASG
+resource "aws_autoscaling_group" "asg" {
+  launch_configuration = aws_launch_configuration.launch_config.name
+  min_size             = 2
+  max_size             = 10
+
+  vpc_zone_identifier = [for subnet in aws_subnet.private_subnets : subnet.id]
 }
 
 # Create the ALB
