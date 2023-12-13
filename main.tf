@@ -39,3 +39,22 @@ resource "aws_internet_gateway" "igw" {
   tags = local.tags
 
 }
+
+# Create the EIP that will be associated with the NAT gateway
+resource "aws_eip" "ngw" {
+  domain   = "vpc"
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.igw]
+}
+
+# Crete the NAT gateway so that the private instances can communicate with the ALB
+resource "aws_nat_gateway" "example" {
+  allocation_id = aws_eip.ngw.id
+  subnet_id     = aws_subnet.public_subnets[0].id
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.igw]
+}
