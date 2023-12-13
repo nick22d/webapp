@@ -28,6 +28,13 @@ resource "aws_route_table" "private" {
     gateway_id = "local"
   }
 
+  # Route for the NAT GW
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.example.id
+  }
+
+
   tags = {
     Name = "PrivateRouteTable"
   }
