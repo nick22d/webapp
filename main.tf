@@ -42,7 +42,7 @@ resource "aws_internet_gateway" "igw" {
 
 # Create the EIP that will be associated with the NAT gateway
 resource "aws_eip" "ngw" {
-  domain   = "vpc"
+  domain = "vpc"
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
   # on the Internet Gateway for the VPC.
