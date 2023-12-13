@@ -79,7 +79,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size             = 2
   max_size             = 10
 
-  vpc_zone_identifier = [aws_subnet.private_subnet1.id, aws_subnet.private_subnet2.id]
+  vpc_zone_identifier = [aws_subnet.private_subnets[0].id, aws_subnet.private_subnets[1].id]
 
   target_group_arns = [aws_lb_target_group.lb_tg.arn]
 }
@@ -90,7 +90,7 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg_for_alb.id]
-  subnets            = [aws_subnet.public_subnet1.id, aws_subnet.public_subnet2.id]
+  subnets            = [aws_subnet.public_subnets[0].id, aws_subnet.public_subnets[1].id]
 
   enable_deletion_protection = false
 
