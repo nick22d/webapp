@@ -19,7 +19,9 @@ This code assumes that you have already Terraform installed locally. For instruc
 
 1) Clone the repository locally:
 
-```https://github.com/nick22d/webapp.git```
+```
+https://github.com/nick22d/webapp.git
+```
 
 2) Navigate into the repository:
 
