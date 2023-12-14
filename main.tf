@@ -1,3 +1,4 @@
+# Define the main terraform block
 terraform {
   required_providers {
     aws = {
@@ -50,7 +51,7 @@ resource "aws_eip" "ngw" {
 }
 
 # Crete the NAT gateway so that the private instances can communicate with the ALB
-resource "aws_nat_gateway" "example" {
+resource "aws_nat_gateway" "ngw" {
   allocation_id = aws_eip.ngw.id
   subnet_id     = aws_subnet.public_subnets[0].id
 
@@ -246,7 +247,7 @@ resource "aws_route_table" "private" {
   # Default route to the NAT GW
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.example.id
+    gateway_id = aws_nat_gateway.ngw.id
   }
 
 
