@@ -11,7 +11,7 @@ The components involved are the following:
 * Security groups
 
 ## Architectural diagram
-![Diagram](diagram.png)
+![Diagram](images/diagram.png)
 
 
 ## Usage
