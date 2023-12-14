@@ -15,9 +15,8 @@ The components involved are the following:
 
 
 ## Usage
-This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [a].
+This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [here].
 
-## References
 [a]: https://developer.hashicorp.com/terraform/install
 
   
