@@ -125,7 +125,34 @@ resource "aws_launch_configuration" "launch_config" {
         sudo systemctl start httpd
         sudo systemctl enable httpd
         cd /var/www/html
-        echo "<html><h1>This is my 1st server</h1></html>" > index.html
+            cat << EOF2 > index.html
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+</body>
+</html>
+
+            EOF2
         sudo systemctl restart httpd
 
     EOF
