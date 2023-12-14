@@ -125,9 +125,7 @@ resource "aws_launch_configuration" "launch_config" {
         sudo systemctl start httpd
         sudo systemctl enable httpd
         cd /var/www/html
-            cat << EOF2 > index.html
-            <!DOCTYPE html>
-<html lang="en">
+        echo "<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,9 +148,7 @@ resource "aws_launch_configuration" "launch_config" {
 <body>
   <h1>Hello, World!</h1>
 </body>
-</html>
-
-            EOF2
+</html>"> index.html
         sudo systemctl restart httpd
 
     EOF
