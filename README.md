@@ -18,6 +18,6 @@ The components involved are the following:
 This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [a].
 
 ## References
-a: https://developer.hashicorp.com/terraform/install
+[a]: https://developer.hashicorp.com/terraform/install
 
   
