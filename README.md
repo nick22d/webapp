@@ -18,11 +18,11 @@ The components involved are the following:
 This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [here](https://developer.hashicorp.com/terraform/install).
 
 To deploy this solution, please follow the instructions below.
-
+  
 1) Clone the repository locally:
 
 ```
-https://github.com/nick22d/webapp.git
+git clone https://github.com/nick22d/webapp.git
 ```
 
 2) Navigate into the repository:
