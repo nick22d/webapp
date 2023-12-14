@@ -17,6 +17,8 @@ The components involved are the following:
 ## Usage
 This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [here](https://developer.hashicorp.com/terraform/install).
 
+To deploy this solution, please follow the instructions below.
+
 1) Clone the repository locally:
 
 ```
@@ -42,5 +44,5 @@ terraform apply --auto-approve
 4) Verify functionality by browsing to the DNS name of the ALB returned in the output with the command below:
 
 ```
-`curl http://<dns name of the ALB>`
+curl http://<dns name of the ALB>
 ```  
