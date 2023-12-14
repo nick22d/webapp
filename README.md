@@ -1,4 +1,4 @@
-<div style="text-align:center"># A two-tier architecture for a single-page application</div> 
+# A two-tier architecture for a single-page application.
 
 ## The purpose of this project
 
