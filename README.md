@@ -12,7 +12,7 @@ The components involved are the following:
 * Application Load Balancer (ALB)
 
 ## Architectural diagram
-(diagram.png)
+![Diagram](diagram.png)
 
 
 ## Instructions/usage/how to use
