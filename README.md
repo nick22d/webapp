@@ -19,19 +19,19 @@ This code assumes that you have already Terraform installed locally. For instruc
 
 To deploy this solution, please follow the instructions below.
   
-1) Clone the repository locally:
+**1)** Clone the repository locally:
 
 ```
 git clone https://github.com/nick22d/webapp.git
 ```
 
-2) Navigate into the repository:
+**2)** Navigate into the repository:
 
 ```
 cd webapp/
 ```
 
-3) Run the following commands in the order written:
+**3)** Run the following commands in the order written:
 
 ```
 terraform init
@@ -41,7 +41,7 @@ terraform init
 terraform apply --auto-approve
 ```
 
-4) Verify functionality by browsing to the DNS name of the ALB returned in the output with the command below:
+**4)** Verify functionality by browsing to the DNS name of the ALB returned in the output with the command below:
 
 ```
 curl http://<dns name of the ALB>
