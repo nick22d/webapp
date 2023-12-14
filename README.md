@@ -25,15 +25,22 @@ https://github.com/nick22d/webapp.git
 
 2) Navigate into the repository:
 
-`cd webapp/`
+```
+cd webapp/
+```
 
 3) Run the following commands in the order written:
 
-`terraform init`
+```
+terraform init
+```
 
-`terraform apply --auto-approve`
+```
+terraform apply --auto-approve
+```
 
 4) Verify functionality by browsing to the DNS name of the ALB returned in the output with the command below:
 
+```
 `curl http://<dns name of the ALB>`
-  
+```  
