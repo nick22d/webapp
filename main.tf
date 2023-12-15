@@ -14,6 +14,8 @@ locals {
 
   vpc_cidr_block = "10.0.0.0/16"
 
+  default_cidr_block = "0.0.0.0/0"
+
   ami = "ami-0302f42a44bf53a45"
 
   tags = {
@@ -71,14 +73,14 @@ resource "aws_security_group" "sg_for_alb" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.default_cidr_block]
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.default_cidr_block]
   }
 
   tags = {
@@ -104,7 +106,7 @@ resource "aws_security_group" "sg_for_ec2" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.default_cidr_block]
   }
 
   tags = {
@@ -239,12 +241,12 @@ resource "aws_route_table" "public" {
 
   # Route for internal communication
   route {
-    cidr_block = "10.0.0.0/16"
+    cidr_block =  local.vpc_cidr_block
     gateway_id = "local"
   }
   # Default route to the IGW
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = local.default_cidr_block
     gateway_id = aws_internet_gateway.igw.id
   }
 
@@ -259,13 +261,13 @@ resource "aws_route_table" "private" {
 
   # Route for internal communication
   route {
-    cidr_block = "10.0.0.0/16"
+    cidr_block =  local.vpc_cidr_block
     gateway_id = "local"
   }
 
   # Default route to the NAT GW
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = local.default_cidr_block
     gateway_id = aws_nat_gateway.ngw.id
   }
 
