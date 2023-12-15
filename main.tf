@@ -159,7 +159,7 @@ resource "aws_launch_configuration" "launch_config" {
 # Create the ASG
 resource "aws_autoscaling_group" "asg" {
   launch_configuration = aws_launch_configuration.launch_config.name
-  min_size             = 2
+  min_size             = 4
   max_size             = 10
 
   vpc_zone_identifier = [aws_subnet.private_subnets[0].id, aws_subnet.private_subnets[1].id]
