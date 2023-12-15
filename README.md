@@ -15,7 +15,7 @@ The components involved are the following:
 
 ## Traffic flow
 
-**1)** HTTP traffic is transmitted from the client to the ALB which is the first point of entry.
+**1)** HTTP traffic is transmitted from the client to the ALB which is the first point of entry into the infrastructure.
 
 **2)** The ALB forwards the traffic to the healthy, backend EC2 instances which host the web application.
 
