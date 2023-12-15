@@ -125,30 +125,26 @@ resource "aws_launch_configuration" "launch_config" {
         sudo systemctl start httpd
         sudo systemctl enable httpd
         cd /var/www/html
-        echo "<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      font-size: 3em;
-    }
-  </style>
-</head>
-<body>
-  <h1>Hello, World!</h1>
-</body>
-</html>"> index.html
+        echo "<html>
+        <head>
+        <title>A two-tier architecture for a single-page application</title>
+        <style>
+        body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white
+        }
+        </style>
+        </head>
+        <body>
+        <h1>Security Charms</h1>
+        </body>
+        </html>" > index.html
         sudo systemctl restart httpd
 
     EOF
