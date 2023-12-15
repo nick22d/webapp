@@ -13,6 +13,16 @@ The components involved are the following:
 ## Architectural diagram
 ![Diagram](images/diagram.png)
 
+## Traffic flow
+
+**1)** HTTP traffic is transmitted from the client to the ALB which is the first point of entry.
+
+**2)** The ALB forwards the traffic to the healthy, backend EC2 instances which host the web application.
+
+**3)** Thanks to the NAT gateway, return traffic from the isolated, private subnets makes its way back to the ALB.
+
+**4)** The web site is served to the client.
+
 
 ## Usage
 This code assumes that you have already Terraform installed locally. For instructions on how to install Terraform, please refer to Hashicorp's documentation [here](https://developer.hashicorp.com/terraform/install).
