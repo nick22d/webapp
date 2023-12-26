@@ -1,5 +1,6 @@
 # Define the main terraform block
 terraform {
+  required_version = ">=1.6.6"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
