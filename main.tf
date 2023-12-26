@@ -269,7 +269,7 @@ resource "aws_route_table" "private" {
   # Default route to the NAT GW
   route {
     cidr_block = local.default_cidr_block
-    gateway_id = aws_nat_gateway.ngw.id
+    nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
 
