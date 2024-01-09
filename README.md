@@ -54,5 +54,5 @@ terraform apply --auto-approve
 **4)** Verify functionality by browsing to the DNS name of the ALB returned in the output with the command below:
 
 ```
-curl http://<dns name of the ALB>
+curl $(terraform output -raw alb_dns_name)
 ```  
